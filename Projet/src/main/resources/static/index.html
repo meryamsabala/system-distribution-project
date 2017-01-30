@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="bootstrap-3.3.4/bootstrap-3.3.4/dist/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/myStyle.css"/>
+<title>Catalogue Societe</title>
+</head>
+<body  ng-app="MaBourse" ng-controller="myController">
+<div class="col-md-6 col-sm-12 col-xs-12">
+<div class="panel panel-info spacer">
+<div class="panel-heading">Societe</div>
+<div class="panel-body">
+<form>
+	<div class="form-group">
+		<label>Code Societe:</label>
+		<input type="text" ng-model="code">
+    	<button ng-click="chargerSociete()" class="btn btn-info">Afficher</button>
+    </div>
+</form>
+</div>
+</div>
+</div>
+<div ng-if="societe">
+<div class="col-md-6 col-sm-12 col-xs-12">
+<div class="panel panel-info spacer">
+<div class="panel-heading">Information Sociéte</div>
+<div class="panel-body">
+<div class="form-group">
+		<label>Code Sociéte: </label>
+		<label> {{societe.code}}</label>
+</div>
+<div class="form-group">
+		<label>Nom Sociéte: </label>
+		<label> {{societe.nomSociete}}</label>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-sm-12 col-xs-12">
+<div class="panel panel-info spacer">
+<div class="panel-heading">Les Ordres de Sociéte</div>
+<div class="panel-body">
+
+<div class="form-group">
+	<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Numéro</th><th>Date Ordre</th><th>Prix Action</th><th>nombreAction</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="O in pageOrdre.content">
+			<td>{{O.numero}}</td>
+			<td>{{O.dateOrdre| date:'yyyy-MM-dd'}}</td>
+			<td>{{O.prixAction}}</td>
+			<td>{{O.nombreAction}}</td>
+			
+
+		</tr>
+	</tbody>
+</table>
+<div class="container">
+	<ul class="nav nav-pills">
+		<li ng-class="{active:pageCourante==$index}" ng-repeat="p in pages track by $index" class="clickable" >
+		<a ng-click="goToPage($index)">{{$index}}</a>
+		</li>
+	</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<div class="col-md-6 col-sm-12 col-xs-12">
+<div class="panel panel-info spacer">
+<div class="panel-heading">Societe</div>
+<div class="panel-body">
+<form>
+	<div class="form-group">
+		<label>Totale Action en Achat:</label>
+		<label>{{TotalAchat}}</label>
+    </div>
+    <div class="form-group">
+		<label>Totale Action en Vente:</label>
+		<label>{{TotalVente}}</label>
+    </div>
+    <div class="form-group">
+		<label>Moyen Prix d'Action en Achat:</label>
+		<label>{{MoyenAchat}}</label>
+    </div>
+    <div class="form-group">
+		<label>Moyen Prix d'Action en Vente:</label>
+		<label>{{MoyenVente}}</label>
+    </div>
+    <div class="form-group">
+		<label>Estimation en Achat:</label>
+		<label>{{EstimationAchat}}</label>
+    </div>
+    <div class="form-group">
+		<label>Estimation Action en Vente:</label>
+		<label>{{EstimationVente}}</label>
+    </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="text/javascript" src="Angular/angular.min.js"></script>
+<script type="text/javascript" src="js/myApp.js"></script>
+</body>
+</html>

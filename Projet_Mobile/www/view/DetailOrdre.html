@@ -1,0 +1,18 @@
+
+<ion-view view-title="Ordres">
+    <ion-content>
+        <ion-list>
+            <ion-item class="item item-avatar" ng-repeat="O in listOrdres">
+                <p>L'ordre : {{O.numero}}</p>
+                <p>Date : {{O.dateOrdre|date:'yyyy-MM-dd'}}</p>
+                <p>Nombre d'Action: {{O.nombreAction}}</p>
+                <p>Prix d'Action: {{O.prixAction}}</p>
+            </ion-item>
+        </ion-list>
+
+        <ion-infinite-scroll on-infinite="loadMore()"></ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>
+
+
